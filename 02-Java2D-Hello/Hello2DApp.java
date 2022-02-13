@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+//Mudanças feitas: troquei as cores e escrevi um texto
+
 public class Hello2DApp {
     public static void main (String[] args) {
         Hello2DFrame frame = new Hello2DFrame();
