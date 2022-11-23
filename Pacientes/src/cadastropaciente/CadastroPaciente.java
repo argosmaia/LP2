@@ -1,7 +1,3 @@
-package cadastropaciente;
-
-import java.util.Scanner;
-
 import paciente.Paciente;
 
 public class CadastroPaciente {
@@ -10,7 +6,7 @@ public class CadastroPaciente {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		
-		int n, op; 
+		int n, op, cod; 
 		
 		System.out.println("Digite um inteiro: ");
 		n = sc.nextInt();
@@ -22,14 +18,34 @@ public class CadastroPaciente {
 		switch(op) {
 			case 1:
 				for(int i = 0; i < pacientes.length; i++) {
-					pacientes[i].setCodigo(sc.nextInt());
+					System.out.println("Código: ");
+					pacientes[i].setCodigo(getCodigo(sc.nextInt()));
+					
+					System.out.println("Nome: ");
 					pacientes[i].setNome(sc.nextLine());
+					
+					System.out.println("CPF: ");
 					pacientes[i].setCpf(sc.nextInt());
+					
+					System.out.println("Telefone: ");
 					pacientes[i].setTelefone(sc.nextInt());
 				}
 				break;
 			
 			case 2:
+				cod = sc.nextInt();
+				
+		        for(int i = 0; i < pacientes.length; i++) {
+		        	
+		            // caso o código do paciente exista
+		            if(pacientes[i].equals(cod)){
+		                System.out.println("O paciente procurado é "+pacientes[i]);
+		            
+		            // se não existir...    
+		            } else if(i == pacientes.length - 1){
+		                System.out.println("Paciente nao encontrado! ");
+		            }
+		        }
 				break;
 			
 			case 3:
@@ -47,6 +63,11 @@ public class CadastroPaciente {
 		}
 		
 		sc.close();
+	}
+
+	private static int getCodigo(int nextInt) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
