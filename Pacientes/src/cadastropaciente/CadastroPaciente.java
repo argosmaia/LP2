@@ -1,3 +1,8 @@
+package cadastropaciente;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
 import paciente.Paciente;
 
 public class CadastroPaciente {
@@ -33,13 +38,14 @@ public class CadastroPaciente {
 				break;
 			
 			case 2:
+				System.out.println("Digite o código a buscar: ");
 				cod = sc.nextInt();
 				
 		        for(int i = 0; i < pacientes.length; i++) {
 		        	
 		            // caso o código do paciente exista
 		            if(pacientes[i].equals(cod)){
-		                System.out.println("O paciente procurado é "+pacientes[i]);
+		                System.out.println("O paciente procurado tem os dados "+pacientes[i]);
 		            
 		            // se não existir...    
 		            } else if(i == pacientes.length - 1){
@@ -63,11 +69,6 @@ public class CadastroPaciente {
 		}
 		
 		sc.close();
-	}
-
-	private static int getCodigo(int nextInt) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
