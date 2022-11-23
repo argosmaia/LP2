@@ -48,12 +48,20 @@ public class Paciente {
 	public void setTelefone(int telefone) {
 		this.telefone = telefone;
 	}
-
+	
 	public String toString() {
 		return "Paciente [codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone
 				+ ", getCodigo()=" + getCodigo() + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
 				+ ", getTelefone()=" + getTelefone() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
+	
+/*	public void igual(int codigo) { 
+		if(setCodigo(codigo) == codigo) {
+			return(codigo);
+		}else {
+			System.out.println("Codigo invalido");
+		}
+	}*/
 	
 }
