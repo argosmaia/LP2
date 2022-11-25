@@ -24,7 +24,7 @@ public class CadastroPaciente {
 			case 1:
 				for(int i = 0; i < pacientes.length; i++) {
 					System.out.println("Código: ");
-					pacientes[i].setCodigo(getCodigo(sc.nextInt()));
+					pacientes[i].setCodigo(sc.nextInt());
 					
 					System.out.println("Nome: ");
 					pacientes[i].setNome(sc.nextLine());
@@ -42,16 +42,10 @@ public class CadastroPaciente {
 				cod = sc.nextInt();
 				
 		        for(int i = 0; i < pacientes.length; i++) {
-		        	
-		            // caso o código do paciente exista
-		            if(pacientes[i].equals(cod)){
-		                System.out.println("O paciente procurado tem os dados "+pacientes[i]);
-		            
-		            // se não existir...    
-		            } else if(i == pacientes.length - 1){
-		                System.out.println("Paciente nao encontrado! ");
-		            }
-		        }
+		        	if(pacientes[i].igual(cod)) {
+						System.out.println(Arrays.toString(pacientes));
+					}
+				}
 				break;
 			
 			case 3:
