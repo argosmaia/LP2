@@ -49,19 +49,17 @@ public class Paciente {
 		this.telefone = telefone;
 	}
 	
-	public String toString() {
-		return "Paciente [codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone
-				+ ", getCodigo()=" + getCodigo() + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
-				+ ", getTelefone()=" + getTelefone() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+	public boolean igual(int code) {
+		if(getCodigo() == code) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
-/*	public void igual(int codigo) { 
-		if(setCodigo(codigo) == codigo) {
-			return(codigo);
-		}else {
-			System.out.println("Codigo invalido");
-		}
-	}*/
+	public String toString() {
+		return "Paciente [codigo = "+codigo +", nome = " + nome + ", cpf = " + cpf + ", telefone = " + telefone
+				+"]";
+	}
 	
 }
