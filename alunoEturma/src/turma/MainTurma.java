@@ -21,6 +21,7 @@ public class MainTurma {
     public static void main(String[] args){
         String nome;
         int n, op;
+	double soma;
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite a qtd de vetores: ");
         n = sc.nextInt();
@@ -40,8 +41,9 @@ public class MainTurma {
 
                 case 4: 
                     for(int j=0; j<alunosLista.size(); j++) {
-					    soma = soma + alunos[j].calcMedia();
+			soma = soma + alunos.getMedia(j).Media();
                     }
+		    media = media/turma.size();
                 break;
 
                 default:
