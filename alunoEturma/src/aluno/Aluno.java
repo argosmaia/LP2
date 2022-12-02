@@ -5,6 +5,7 @@ public class Aluno {
 	public String nome;
 	public double nota1;
 	public double nota2;
+	public double media;
 	
 	public Aluno() {
 		
@@ -15,6 +16,7 @@ public class Aluno {
 		this.nome = nome;
 		this.nota1 = nota1;
 		this.nota2 = nota2;
+		this.media = this.Media();
 	}
 
 	public String getMatricula() {
@@ -49,19 +51,25 @@ public class Aluno {
 		this.nota2 = nota2;
 	}
 	
+	public double getMedia() {
+		return media;
+	}
+
+	public void setMedia(double media){
+		this.media;
+	}
+
 	public double Media() {
 		return((nota1+nota2)/2);
 	}
 	
-	public boolean Compara(Aluno aluno) {
-		if(this.nome.equals(aluno.getNome())) {
-			return true;
-		}
-		return false;
+	public boolean Compara(String nome) {
+		return this.nome.equalsIgnoreCase(nome);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Aluno: \nMatricula = " + matricula + "\nNome = " + nome + "\nNota1 = " + nota1 + ",\nNota2 = " + nota2;
 	}
 }
+
