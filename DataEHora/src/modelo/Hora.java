@@ -41,7 +41,7 @@ public class Hora {
 
 	@Override
 	public String toString() {
-		return ""+ hora + ":" + minuto + ":" + segundo;
+		return hora + ":" + minuto + ":" + segundo;
 	}
 	
 	
