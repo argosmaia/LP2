@@ -27,6 +27,6 @@ public class DataHora {
 
 	@Override
 	public String toString() {
-		return "Data "+dt+" Hora "+h;
+		return "Hora "+h+" do dia "+dt;
 	}	
 }
