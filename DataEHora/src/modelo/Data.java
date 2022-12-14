@@ -41,6 +41,6 @@ public class Data {
 
 	@Override
 	public String toString() {
-		return "Ano=" + ano + ", mes=" + mes + ", dia=" + dia + "]";
+		return "" + ano + "/" + mes + "/" + dia;
 	}
 }
