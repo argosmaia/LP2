@@ -20,6 +20,13 @@ public class Funcionario extends Pessoa {
 		this.admission = admission;
 		this.salario = salario;
 	}
+	
+	//OPÇÃO 3 - Caso a classe pessoa ja exista na main
+	public Funcionario(Pessoa p, Data admission, double salario) {
+		super(p.getNome(), p.getCpf(), p.getDataNasc());
+		this.admission = admission;
+		this.salario = salario;
+	}
 
 	public Data getAdmission() {
 		return admission;
@@ -39,6 +46,6 @@ public class Funcionario extends Pessoa {
 
 	@Override
 	public String toString() {
-		return super.toString()+"\nFuncionario\nData de admissão: "+admission+"\nSalario: "+salario;
+		return super.toString()+"Funcionario\nData de admissão: "+admission+"\nSalario: "+salario;
 	}
 }
