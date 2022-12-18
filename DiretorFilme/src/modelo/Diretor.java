@@ -1,18 +1,18 @@
 package modelo;
-
+//ARGOS A MAIA
 public class Diretor {
 	public String nome;
-	public String tempoExperiencia;
+	public int tempoExperiencia;
 	public String localDeOrigem;
-	
-	public Diretor() {
-		
-	}
 
-	public Diretor(String nome, String tempoExperiencia, String localDeOrigem) {
+	public Diretor(String nome, int tempoExperiencia, String localDeOrigem) {
 		this.nome = nome;
 		this.tempoExperiencia = tempoExperiencia;
 		this.localDeOrigem = localDeOrigem;
+	}
+
+	public Diretor() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getNome() {
@@ -23,11 +23,11 @@ public class Diretor {
 		this.nome = nome;
 	}
 
-	public String getTempoExperiencia() {
+	public int getTempoExperiencia() {
 		return tempoExperiencia;
 	}
 
-	public void setTempoExperiencia(String tempoExperiencia) {
+	public void setTempoExperiencia(int tempoExperiencia) {
 		this.tempoExperiencia = tempoExperiencia;
 	}
 
@@ -41,6 +41,6 @@ public class Diretor {
 
 	@Override
 	public String toString() {
-		return "Diretor\nNome: "+nome+"\nTempo de Experiencia: "+tempoExperiencia+"\nOrigem: "+localDeOrigem;
+		return "\nDiretor\nNome: "+nome+"\nTempo de Experiencia: "+tempoExperiencia+"\nOrigem: "+localDeOrigem+"\n";
 	}
 }
