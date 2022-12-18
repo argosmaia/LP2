@@ -3,20 +3,20 @@ package modelo;
 public class Filme {
 	public String titulo;
 	public String descricao;
-	public Diretor diretor;
 	public int duracaoEmMinutos;
+	
+	private Diretor diretor;
 	
 	public Filme() {
 		
 	}
-
-	public Filme(String nome, String tempoExperiencia, String localDeOrigem, String titulo, String descricao, Diretor diretor, int duracaoEmMinutos) {
+	
+	public Filme(String nome, int tempoExperiencia, String localDeOrigem, String titulo, String descricao, Diretor diretor, int duracaoEmMinutos) {
 		this.titulo = titulo;
 		this.descricao = descricao;
 		diretor = new Diretor(nome, tempoExperiencia, localDeOrigem);
 		this.duracaoEmMinutos = duracaoEmMinutos;
 	}
-
 	public String getTitulo() {
 		return titulo;
 	}
@@ -33,6 +33,14 @@ public class Filme {
 		this.descricao = descricao;
 	}
 
+	public int getDuracaoEmMinutos() {
+		return duracaoEmMinutos;
+	}
+
+	public void setDuracaoEmMinutos(int duracaoEmMinutos) {
+		this.duracaoEmMinutos = duracaoEmMinutos;
+	}
+		
 	public Diretor getDiretor() {
 		return diretor;
 	}
@@ -41,16 +49,18 @@ public class Filme {
 		this.diretor = diretor;
 	}
 
-	public int getDuracaoEmMinutos() {
-		return duracaoEmMinutos;
+	public boolean retornaNome(String titulo) {
+		return this.titulo.equalsIgnoreCase(titulo);
 	}
-
-	public void setDuracaoEmMinutos(int duracaoEmMinutos) {
-		this.duracaoEmMinutos = duracaoEmMinutos;
+	
+	public String exibirDuracaoEmHoras() {
+		int horas = duracaoEmMinutos / 60;
+		int minutos = duracaoEmMinutos % 60;
+		return horas+" horas e "+minutos+" minutos de duracao";
 	}
 
 	@Override
 	public String toString() {
-		return "Filme\nTitulo: "+titulo+"\nDescricao: "+descricao+"\nDuracao em Minutos: "+duracaoEmMinutos+"\nDiretor: "+diretor;
+		return "Filme\nTitulo: "+titulo+"\nDescricao: "+descricao+"\nO titulo possui : "+exibirDuracaoEmHoras()+"\nDitretor: "+diretor;
 	}
 }
