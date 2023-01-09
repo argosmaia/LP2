@@ -5,7 +5,7 @@ public class Ellipse {
     int a, b;
     int largura, altura;
     Color backgroundColor, borderColor;
-
+  }
    public Ellipse(int a, int b, int largura, int altura, Color border, Color background){
         this.a = b;
         this.b = b;
@@ -36,7 +36,7 @@ public class Ellipse {
     public void drag(int x, int y){
         this.a = this.a+x;
         this.b = this.b+y;
-    };
+    }
 
     public void changeColor(Color border, Color background){
         this.backgroundColor = background;
