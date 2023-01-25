@@ -6,13 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtNome;
 
 	/**
 	 * Launch the application.
@@ -46,12 +49,25 @@ public class Login extends JFrame {
 		lblNome.setBounds(12, 12, 70, 15);
 		contentPane.add(lblNome);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 35, 114, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setText("Nome");
+		txtNome.setBounds(12, 35, 114, 19);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						String nome = txtNome.getText();
+						if(nome.isEmpty() || nome.isBlank()) {
+							JOptionPane.showMessageDialog(getParent(), "Preencha seu nome!");
+						}else {
+							JOptionPane.showMessageDialog(getContentPane(), "Olá"+txtNome.getText());
+						}
+					}
+		});
+		
 		btnEntrar.setBounds(12, 98, 117, 25);
 		contentPane.add(btnEntrar);
 		
