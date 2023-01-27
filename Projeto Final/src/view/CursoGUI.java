@@ -6,18 +6,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CursoGUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtCodigo;
+	private JTextField txtNome;
+	private JTextField txtCargaHora;
+	private JTextField txtCoordenador;
 
 	/**
 	 * Launch the application.
@@ -41,7 +45,7 @@ public class CursoGUI extends JFrame {
 	public CursoGUI() {
 		setTitle("Cadastro de Curso");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 545);
+		setBounds(100, 100, 450, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -52,28 +56,28 @@ public class CursoGUI extends JFrame {
 		lblCodigo.setBounds(157, 6, 61, 16);
 		contentPane.add(lblCodigo);
 		
-		textField = new JTextField();
-		textField.setBounds(20, 34, 402, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(20, 34, 402, 26);
+		contentPane.add(txtCodigo);
+		txtCodigo.setColumns(10);
 		
 		JLabel lblNome = new JLabel("NOME");
 		lblNome.setBounds(157, 84, 61, 16);
 		contentPane.add(lblNome);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(20, 112, 402, 26);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(20, 112, 402, 26);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblCargaHoraria = new JLabel("CARGA HORÁRIA");
 		lblCargaHoraria.setBounds(135, 150, 112, 16);
 		contentPane.add(lblCargaHoraria);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(20, 178, 402, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtCargaHora = new JTextField();
+		txtCargaHora.setBounds(20, 178, 402, 26);
+		contentPane.add(txtCargaHora);
+		txtCargaHora.setColumns(10);
 		
 		JLabel lblArea = new JLabel("ÁREA");
 		lblArea.setBounds(157, 216, 61, 16);
@@ -88,17 +92,53 @@ public class CursoGUI extends JFrame {
 		lblCoordenador.setBounds(120, 277, 147, 16);
 		contentPane.add(lblCoordenador);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(20, 316, 402, 26);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		txtCoordenador = new JTextField();
+		txtCoordenador.setText("Coordenador");
+		txtCoordenador.setBounds(20, 300, 402, 26);
+		contentPane.add(txtCoordenador);
+		txtCoordenador.setColumns(10);
 		
 		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.setBounds(20, 369, 117, 57);
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpaTela();
+			}
+		});
+		btnLimpar.setBounds(157, 369, 117, 57);
 		contentPane.add(btnLimpar);
 		
 		JButton btnEnviar = new JButton("Enviar");
-		btnEnviar.setBounds(237, 369, 117, 57);
+		btnEnviar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtCodigo.getText().isEmpty() || txtNome.getText().isEmpty() || txtCargaHora.getText().isEmpty() || txtCoordenador.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(getContentPane(), "Impossivel conitnuar com campos vazios", "Erro", JOptionPane.ERROR_MESSAGE);
+				}else {
+					CadastroUsuarioGUI cadastrogui = new CadastroUsuarioGUI();
+					cadastrogui.setVisible(true);
+					dispose();
+				}
+				
+			}
+		});
+		btnEnviar.setBounds(286, 369, 117, 57);
 		contentPane.add(btnEnviar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginGUI logingui = new LoginGUI();
+				logingui.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(28, 369, 117, 57);
+		contentPane.add(btnVoltar);
+	}
+	
+	public void limpaTela() {
+		txtCodigo.setText("");
+		txtNome.setText("");
+		txtCargaHora.setText("");
+		txtCoordenador.setText("");
 	}
 }
