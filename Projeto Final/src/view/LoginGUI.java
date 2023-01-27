@@ -39,7 +39,6 @@ public class LoginGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("deprecation")
 	public LoginGUI() {
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,15 +62,17 @@ public class LoginGUI extends JFrame {
 		lbl_senha.setBounds(123, 85, 61, 16);
 		contentPane.add(lbl_senha);
 		
-		pwdField = new JPasswordField();
+		pwdField = new JPasswordField(5);
 		pwdField.setBounds(29, 104, 275, 26);
 		contentPane.add(pwdField);
 		
-		//TAMANHO DA SENHA
-		String pass = new String(pwdField.getPassword());
-		
 		JButton btn_limpar = new JButton("Limpar");
-		btn_limpar.setBounds(17, 168, 117, 29);
+		btn_limpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpaTela();
+			}
+		});
+		btn_limpar.setBounds(29, 168, 117, 29);
 		contentPane.add(btn_limpar);
 		
 		
@@ -79,23 +80,30 @@ public class LoginGUI extends JFrame {
 		JButton btn_evniar = new JButton("Enviar");
 		btn_evniar.addActionListener(
 				new ActionListener() {
+
 					public void actionPerformed(ActionEvent e) {
-					
+						String senha;
+						senha = String.valueOf(pwdField.getPassword());
 						if(txtLogin.getText().isEmpty() || pwdField.getPassword().length < 0) {
-							JOptionPane.showMessageDialog(getContentPane(), "Nome ou senha inválido","Erro", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(getContentPane(), "Nome ou senha inválido", "Erro", JOptionPane.ERROR_MESSAGE);
 						}else {
-						
-							if(txtLogin.getText() == "user" && pass.equals("12345")) {
+							String obj = "12345";
+							if(txtLogin.getText().equals("user") && senha.equals(obj)) {
 								CursoGUI cursogui = new CursoGUI();
-								cursogui.show();
+								cursogui.setVisible(true);
 								dispose();
-							} /*else {
+							} else {
 								JOptionPane.showMessageDialog(getContentPane(), "Nome ou senha inválido","Erro", JOptionPane.ERROR_MESSAGE);
-							}*/
+							}
 						}
 					}
 		});
-		btn_evniar.setBounds(161, 168, 117, 29);
+		btn_evniar.setBounds(174, 168, 117, 29);
 		contentPane.add(btn_evniar);
 	}
+	public void limpaTela() {
+		txtLogin.setText("");
+		pwdField.setText("");
+	}
 }
+
