@@ -27,7 +27,6 @@ public class CadastroUsuarioGUI extends JFrame {
 	private JTextField txtSenha;
 	private JLabel lblNewLabel;
 	private JTextField txtConfSenha;
-	Usuario nome;
 	
 	private JSeparator separator;
 	private JScrollPane scrollPaneUsuario;
@@ -100,7 +99,9 @@ public class CadastroUsuarioGUI extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(19, 218, 344, 12);
 		contentPane.add(separator);
+		
 		//TABLE
+		
 		definirJTable();
 		scrollPaneUsuario = new JScrollPane(tableUsuario);
 		scrollPaneUsuario.setBounds(17, 242, 346, 166);
@@ -109,6 +110,7 @@ public class CadastroUsuarioGUI extends JFrame {
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(getParent(), "Isso apagrá a JTable", getTitle(), JOptionPane.WARNING_MESSAGE);
 				limpaTela();
 			}
 		});
@@ -132,9 +134,13 @@ public class CadastroUsuarioGUI extends JFrame {
 				String nome = txtNome.getText();
 				if(!nome.isEmpty()) {
 					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
+					adicionarDados(nome);
+					limpaTela();
+					
 				}else {
 					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
 					adicionarDados(nome);
+					definirJTable();
 					limpaTela();
 				}
 			}
@@ -163,5 +169,9 @@ public class CadastroUsuarioGUI extends JFrame {
 		txtLogin.setText("");
 		txtSenha.setText("");
 		txtConfSenha.setText("");
+	}
+	
+	public void limpaTable() {
+		modelo.setRowCount(0);
 	}
 }

@@ -101,6 +101,7 @@ public class CursoGUI extends JFrame {
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpaTela();
+				
 			}
 		});
 		btnLimpar.setBounds(157, 369, 117, 57);
