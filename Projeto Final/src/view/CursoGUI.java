@@ -93,7 +93,6 @@ public class CursoGUI extends JFrame {
 		contentPane.add(lblCoordenador);
 		
 		txtCoordenador = new JTextField();
-		txtCoordenador.setText("Coordenador");
 		txtCoordenador.setBounds(20, 300, 402, 26);
 		contentPane.add(txtCoordenador);
 		txtCoordenador.setColumns(10);

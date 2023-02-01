@@ -1,17 +1,20 @@
 package view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import model.Usuario;
 
 public class CadastroUsuarioGUI extends JFrame {
 
@@ -24,7 +27,12 @@ public class CadastroUsuarioGUI extends JFrame {
 	private JTextField txtSenha;
 	private JLabel lblNewLabel;
 	private JTextField txtConfSenha;
-
+	Usuario nome;
+	
+	private JSeparator separator;
+	private JScrollPane scrollPaneUsuario;
+	private JTable tableUsuario;
+	private DefaultTableModel modelo = new DefaultTableModel();
 	/**
 	 * Launch the application.
 	 */
@@ -92,11 +100,12 @@ public class CadastroUsuarioGUI extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(19, 218, 344, 12);
 		contentPane.add(separator);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(19, 239, 344, 169);
-		contentPane.add(scrollPane);
-		
+		//TABLE
+		definirJTable();
+		scrollPaneUsuario = new JScrollPane(tableUsuario);
+		scrollPaneUsuario.setBounds(17, 242, 346, 166);
+		getContentPane().add(scrollPaneUsuario);
+
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,8 +127,35 @@ public class CadastroUsuarioGUI extends JFrame {
 		contentPane.add(btnVoltar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = txtNome.getText();
+				if(!nome.isEmpty()) {
+					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
+				}else {
+					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
+					adicionarDados(nome);
+					limpaTela();
+				}
+			}
+		});
 		btnCadastrar.setBounds(256, 429, 117, 29);
 		contentPane.add(btnCadastrar);
+	}
+	
+	public void definirJTable() {
+		modelo = new DefaultTableModel();
+		modelo.addColumn("Nome");
+		tableUsuario = new JTable(modelo);
+		
+	}
+	
+	public void adicionarDados(String nome) {
+		Object[] dados = {nome};
+		modelo.addRow(dados);
+		if(!scrollPaneUsuario.isVisible()){
+			scrollPaneUsuario.setVisible(true);
+		}
 	}
 	
 	public void limpaTela() {

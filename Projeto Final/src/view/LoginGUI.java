@@ -106,4 +106,3 @@ public class LoginGUI extends JFrame {
 		pwdField.setText("");
 	}
 }
-
