@@ -1,8 +1,10 @@
 package view;
 
+import model.UsuarioLogin;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +16,15 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class LoginGUI extends JFrame {
-
+	Scanner sc = new Scanner(System.in);
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JPasswordField pwdField;
+	
+	public void UsuarioLogin() {
+	
+	}
 
 	/**
 	 * Launch the application.
@@ -29,6 +35,7 @@ public class LoginGUI extends JFrame {
 				try {
 					LoginGUI frame = new LoginGUI();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,6 +47,7 @@ public class LoginGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginGUI() {
+		//String login;
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 346, 300);
@@ -83,6 +91,8 @@ public class LoginGUI extends JFrame {
 
 					public void actionPerformed(ActionEvent e) {
 						String senha;
+						
+						Login l = new Login();
 						senha = String.valueOf(pwdField.getPassword());
 						if(txtLogin.getText().isEmpty() || pwdField.getPassword().length < 0) {
 							JOptionPane.showMessageDialog(getContentPane(), "Nome ou senha inválido", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -91,6 +101,8 @@ public class LoginGUI extends JFrame {
 							if(txtLogin.getText().equals("user") && senha.equals(obj)) {
 								CursoGUI cursogui = new CursoGUI();
 								cursogui.setVisible(true);
+								l.setLogin(sc.next(txtLogin.getText()));
+								l.setPassword(sc.next());
 								dispose();
 							} else {
 								JOptionPane.showMessageDialog(getContentPane(), "Nome ou senha inválido","Erro", JOptionPane.ERROR_MESSAGE);

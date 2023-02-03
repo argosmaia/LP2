@@ -1,7 +1,8 @@
 package view;
 
+import model.Login;
+import model.Usuario;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,6 +23,9 @@ public class CursoGUI extends JFrame {
 	private JTextField txtNome;
 	private JTextField txtCargaHora;
 	private JTextField txtCoordenador;
+	Login login;
+	Usuario usuario;
+	
 
 	/**
 	 * Launch the application.
@@ -32,6 +36,7 @@ public class CursoGUI extends JFrame {
 				try {
 					CursoGUI frame = new CursoGUI();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

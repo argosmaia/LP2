@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import model.Usuario;
+import javax.swing.JPasswordField;
 
 public class CadastroUsuarioGUI extends JFrame {
 
@@ -24,7 +25,6 @@ public class CadastroUsuarioGUI extends JFrame {
 	private JLabel lbllogin;
 	private JTextField txtLogin;
 	private JLabel lblSenha;
-	private JTextField txtSenha;
 	private JLabel lblNewLabel;
 	private JTextField txtConfSenha;
 	
@@ -32,6 +32,7 @@ public class CadastroUsuarioGUI extends JFrame {
 	private JScrollPane scrollPaneUsuario;
 	private JTable tableUsuario;
 	private DefaultTableModel modelo = new DefaultTableModel();
+	private JPasswordField txtSenha;
 	/**
 	 * Launch the application.
 	 */
@@ -41,6 +42,7 @@ public class CadastroUsuarioGUI extends JFrame {
 				try {
 					CadastroUsuarioGUI frame = new CadastroUsuarioGUI();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,7 +55,7 @@ public class CadastroUsuarioGUI extends JFrame {
 	 */
 	public CadastroUsuarioGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 415, 506);
+		setBounds(100, 100, 387, 506);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -81,11 +83,6 @@ public class CadastroUsuarioGUI extends JFrame {
 		lblSenha = new JLabel("SENHA");
 		lblSenha.setBounds(138, 111, 61, 16);
 		contentPane.add(lblSenha);
-		
-		txtSenha = new JTextField();
-		txtSenha.setColumns(10);
-		txtSenha.setBounds(19, 125, 344, 26);
-		contentPane.add(txtSenha);
 		
 		lblNewLabel = new JLabel("CONFIRMAR SENHA");
 		lblNewLabel.setBounds(98, 155, 135, 16);
@@ -132,14 +129,13 @@ public class CadastroUsuarioGUI extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome = txtNome.getText();
-				if(!nome.isEmpty()) {
-					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
-					adicionarDados(nome);
-					limpaTela();
+				String login = txtLogin.getText();
+				if(nome.isEmpty() || login.isEmpty() || txtSenha.getPassword().length < 0) {
+					JOptionPane.showMessageDialog(getContentPane(), "Dados Vazios", "Nao cadastrado", JOptionPane.ERROR_MESSAGE);
 					
 				}else {
 					JOptionPane.showMessageDialog(getContentPane(), "Cadastrado com sucesso! Bem-vindo", "Sucesso! Cadastrado", 0, null);
-					adicionarDados(nome);
+					adicionarDados(nome, login);
 					definirJTable();
 					limpaTela();
 				}
@@ -147,17 +143,22 @@ public class CadastroUsuarioGUI extends JFrame {
 		});
 		btnCadastrar.setBounds(256, 429, 117, 29);
 		contentPane.add(btnCadastrar);
+		
+		txtSenha = new JPasswordField();
+		txtSenha.setBounds(19, 123, 344, 26);
+		contentPane.add(txtSenha);
 	}
 	
 	public void definirJTable() {
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Nome");
+		modelo.addColumn("Login");
 		tableUsuario = new JTable(modelo);
 		
 	}
 	
-	public void adicionarDados(String nome) {
-		Object[] dados = {nome};
+	public void adicionarDados(String nome, String login) {
+		Object[] dados = {nome, login};
 		modelo.addRow(dados);
 		if(!scrollPaneUsuario.isVisible()){
 			scrollPaneUsuario.setVisible(true);
